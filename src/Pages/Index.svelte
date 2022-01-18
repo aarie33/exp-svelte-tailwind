@@ -1,5 +1,5 @@
 <script>
-  import debounce from 'lodash/debounce'
+  import { Link } from "svelte-navigator";
   import FilterPanel from "../Components/Table/Filter/FilterPanel.svelte";
   import TableHeaderColumn from "../Components/Table/TableHeaderColumn.svelte";
   import Search from "../Components/Table/Search.svelte";
@@ -121,59 +121,67 @@
   }
 </script>
 
-<h5 class="text-blue-400 mb-3">CRUD Page</h5>
+<h5 class="text-blue-700 mb-3">Sample CRUD Page</h5>
 <div class="mb-6">
   <div class="mt-2 pt-0">
     <div class="flex justify-between flex-wrap sm:flex-no-wrap">
       <FilterPanel on:input={(e) => query = e.detail } filters={ filters } />
         
-      <div class="flex-grow ml-2">
+      <div class="flex-grow ml-1">
         <Search on:input={(e) => query.search = e.detail } />
       </div>
       <button
         class="
-          w-1/12
+          bg-white
           text-sm text-gray-500
-          hover:text-orange-100
-          focus:text-orange-100
+          hover:bg-blue-50
+          hover:text-blue-600
+          focus:text-blue-600
           rounded
           mx-1
+          px-5
+          h-9
         "
         type="button"
         on:click={clear}
       >
         Reset
       </button>
-      <div
-        class="
-          bg-blue-500
-          hover:bg-blue-600
-          inline-block
-          flex
-          items-center
-          py-1
-          px-2
-          rounded
-          float-right
-          text-white
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      <Link
+        to="create">
+        <button
+          class="
+            bg-blue-500
+            hover:bg-blue-600
+            inline-block
+            flex
+            items-center
+            h-9
+            px-2
+            rounded
+            float-right
+            text-white
+            cursor-pointer
+          "
+          type="button"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-          />
-        </svg>
-        Tambah
-      </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+          </svg>
+          Tambah
+        </button>
+      </Link>
     </div>
   </div>
 </div>
@@ -238,25 +246,35 @@
         "
       >
         <td class="px-3">
-          { rowNumber(index) }
+          <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
+            { rowNumber(index) }
+          </Link>
         </td>
         <td class="px-3">
-          <div>{ item.name }</div>
-          <i class="text-gray-500 text-xs">{ item.email }</i>
+          <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
+            <div>{ item.name }</div>
+            <i class="text-gray-500 text-xs">{ item.email }</i>
+          </Link>
         </td>
         <td class="px-3">
-          { item.phone }
+          <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
+            { item.phone }
+          </Link>
         </td>
         <td class="px-3">
-          { item.address || "-" }
+          <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
+            { item.address || "-" }
+          </Link>
         </td>
         <td class="px-3">
-          <div
-            class="rounded-md cursor-pointer text-white text-sm px-2 mb-2"
-            class:bg-blue-400={ item.is_active == 'Active' }
-            class:bg-gray-500={ item.is_active != 'Active' }
-            >{ item.is_active }</div
-          >
+          <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
+            <div
+              class="rounded-md text-white text-sm px-2 mb-2"
+              class:bg-blue-400={ item.is_active == 'Active' }
+              class:bg-gray-500={ item.is_active != 'Active' }
+              >{ item.is_active }</div
+            >
+          </Link>
         </td>
         <td
           class="
@@ -275,55 +293,60 @@
           "
         >
           <div class="flex mb-1">
-            <div
-              class="
-                inline-flex
-                items-center
-                justify-center
-                bg-yellow-500
-                hover:bg-yellow-600
-                h-8
-                w-8
-                rounded-md
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                class="fill-current text-white h-4 w-4"
+            <Link to="detail">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  bg-yellow-500
+                  hover:bg-yellow-600
+                  h-8
+                  w-8
+                  rounded-md
+                "
               >
-                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                <path
-                  fill-rule="evenodd"
-                  d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  class="fill-current text-white h-4 w-4"
+                >
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </Link>
             
-            <div
-              class="
-                inline-flex
-                items-center
-                justify-center
-                bg-blue-600
-                hover:bg-blue-700
-                h-8
-                w-8
-                rounded-md
-                mx-1
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                class="fill-current text-white h-4 w-4"
+            <Link to="create">
+              <div
+                class="
+                  inline-flex
+                  items-center
+                  justify-center
+                  bg-blue-600
+                  hover:bg-blue-700
+                  h-8
+                  w-8
+                  rounded-md
+                  mx-1
+                  cursor-pointer
+                "
               >
-                <path
-                  d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                />
-              </svg>
-            </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  class="fill-current text-white h-4 w-4"
+                >
+                  <path
+                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+                  />
+                </svg>
+              </div>
+            </Link>
             <div
               class="
                 inline-flex
