@@ -1,25 +1,13 @@
 ## Svelte + Tailwind
 Simple CRUD Page
 
-## Get started
-
-Install the dependencies...
+## Installation
 
 ```bash
-cd svelte-app
 npm install
-```
-
-## Tailwind
-```
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-...then start [Rollup](https://rollupjs.org):
-
-```bash
 npm run dev
 ```
+
 
 ## Screenshots
 |Page|Preview|
