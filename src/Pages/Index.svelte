@@ -1,6 +1,6 @@
 <script>
   import { Link } from "svelte-navigator";
-  import FilterPanel from "../Components/Table/Filter/FilterPanel.svelte";
+  import FilterPanel from "../Components/Table/FilterPanel.svelte";
   import TableHeaderColumn from "../Components/Table/TableHeaderColumn.svelte";
   import Search from "../Components/Table/Search.svelte";
   import Pagination from "../Components/Table/Pagination.svelte";
@@ -133,7 +133,7 @@
       <button
         class="
           bg-white
-          text-sm text-gray-500
+          text-sm text-gray-600
           hover:bg-blue-50
           hover:text-blue-600
           focus:text-blue-600
@@ -151,7 +151,7 @@
         to="create">
         <button
           class="
-            bg-blue-500
+            bg-blue-600
             hover:bg-blue-600
             inline-block
             flex
@@ -253,7 +253,7 @@
         <td class="px-3">
           <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
             <div>{ item.name }</div>
-            <i class="text-gray-500 text-xs">{ item.email }</i>
+            <i class="text-gray-600 text-xs">{ item.email }</i>
           </Link>
         </td>
         <td class="px-3">
@@ -270,8 +270,8 @@
           <Link to="detail" class="cursor-pointer hover:no-underline text-gray-800">
             <div
               class="rounded-md text-white text-sm px-2 mb-2"
-              class:bg-blue-400={ item.is_active == 'Active' }
-              class:bg-gray-500={ item.is_active != 'Active' }
+              class:bg-blue-600={ item.is_active == 'Active' }
+              class:bg-gray-600={ item.is_active != 'Active' }
               >{ item.is_active }</div
             >
           </Link>
@@ -299,7 +299,7 @@
                   inline-flex
                   items-center
                   justify-center
-                  bg-yellow-500
+                  bg-yellow-600
                   hover:bg-yellow-600
                   h-8
                   w-8
@@ -352,7 +352,7 @@
                 inline-flex
                 items-center
                 justify-center
-                bg-red-500
+                bg-red-600
                 hover:bg-red-600
                 h-8
                 w-8

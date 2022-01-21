@@ -9,12 +9,12 @@
   <slot>{ label }</slot>
 
   {#if required}
-    <span class="text-red-500">*</span>
+    <span class="text-red-600">*</span>
   {/if}
 </label>
 
 <style lang="postcss" scoped>
 .label-input {
-  @apply block text-xs text-gray-500;
+  @apply block text-xs text-gray-600;
 }
 </style>

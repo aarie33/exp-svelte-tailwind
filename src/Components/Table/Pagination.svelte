@@ -40,7 +40,7 @@
         {#each perPageOptions as perPageOption, index (index) }
           <span
             class="font-medium cursor-pointer mx-2 block text-center p-1 rounded-md
-              {query.per_page == perPageOption ? `bg-blue-400 text-white` : ``}
+              {query.per_page == perPageOption ? `bg-blue-600 text-white` : ``}
               { index === 0 ? `ml-0` : ``}"
             on:click={changeFilterPerPage(perPageOption)}>
             { perPageOption }
@@ -55,7 +55,7 @@
         {#if link.label === '&laquo; Previous' || link.label === '&laquo; Sebelumnya' || link.label === 'Previous' }
           <span
             on:click={ visit(link.url) }
-            class="bg-blue-400 inline-block flex items-center justify-center h-8 w-8 rounded-md cursor-pointer"
+            class="bg-blue-600 inline-block flex items-center justify-center h-8 w-8 rounded-md cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@
         {:else if link.label === 'Next &raquo;' || link.label === 'Berikutnya &raquo;' || link.label === 'Next' }
           <span
             tabindex="0"
-            class="bg-blue-400 inline-block flex items-center justify-center h-8 w-8 rounded-md cursor-pointer"
+            class="bg-blue-600 inline-block flex items-center justify-center h-8 w-8 rounded-md cursor-pointer"
             on:click={ visit(link.url) }
           >
             <svg
@@ -94,7 +94,7 @@
           ></span>
         {:else}
           <span
-            class="border border-gray-400 text-gray-500 font-bold hover:border-blue-400 hover:text-blue-400 text-md inline-block flex items-center justify-center h-8 w-8 rounded-md cursor-pointer"
+            class="border border-gray-400 text-gray-600 font-bold hover:border-blue-600 hover:text-blue-600 text-md inline-block flex items-center justify-center h-8 w-8 rounded-md cursor-pointer"
             on:click={ visit(link.url) }
             class:bg-blue-150={ link.active }
             >{ link.label }</span>
